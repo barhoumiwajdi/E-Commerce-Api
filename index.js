@@ -20,6 +20,10 @@ app.use(require('express-session')({ secret: 'secret', resave: true, saveUniniti
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+app.get('/', async (req, res) => {
+    res.json({ message: 'Welcome to my REST API.' });
+});
 app.use('/api', require('./Routes/AuthApi'))
 app.use('/api', require('./Routes/ProductAPi'))
 app.use('/api', require('./Routes/CategoryAPI'))
