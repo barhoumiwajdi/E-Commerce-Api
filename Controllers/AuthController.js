@@ -67,10 +67,10 @@ exports.forgetPassword = async (req, res) => {
       })
       const resetToken = randomString.generate(30)
       const createdToken = await new Token({
-        companyId: found._id,
+        userId: found._id,
         token: resetToken,
       }).save();
-      const resetLink = 'http://localhost:3000/resetPassword/' + resetToken
+      const resetLink = 'http://localhost:4000/resetPassword/' + resetToken
       await transporter.sendMail({
         from: process.env.EMAIL,
         to: req.body.email,
@@ -99,7 +99,7 @@ exports.resetPassword = async (req, res) => {
           if (error) {
             res.status(500).json({ message: 'Server Error' })
           } else {
-            await Company.findByIdAndUpdate(token.companyId, { password: hash })
+            await user.findByIdAndUpdate(token.userId, { password: hash })
             res.send({ message: 'Password reset successfully!' });
           }
         })
