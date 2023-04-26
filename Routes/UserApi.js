@@ -1,6 +1,6 @@
 const express = require('express');
 const passport = require('passport');
-const authRole = require('../Passport/VerifyUser')
+const authRole = require('../Passport/ ')
 const { getuser, updateuser, deleteuser } = require('../Controllers/UserController');
 const router = express.Router();
 router.get('/user', passport.authenticate('bearer', { session: false }), authRole("admin"), getuser);
