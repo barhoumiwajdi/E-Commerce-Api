@@ -14,9 +14,11 @@ require('./Passport/Bearer')
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(bodyparser.json())
-
-app.use(require('express-session')({ secret: 'secret', resave: true, saveUninitialized: true }));
+app.use(bodyParser.json({ limit: "52428800" }));
+app.use(bodyParser.urlencoded({ limit: "52428800", extended: true, parameterLimit: 50000 }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(session({ resave: true, secret: process.env.JWT_SECRET, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
