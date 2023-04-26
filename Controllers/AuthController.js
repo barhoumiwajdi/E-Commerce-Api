@@ -74,7 +74,7 @@ exports.forgetPassword = async (req, res) => {
       await transporter.sendMail({
         from: process.env.EMAIL,
         to: req.body.email,
-        subject: `Reset password request for ${found.companyName} company`,
+        subject: `Reset password request for ${found.Name} company`,
         html: `<h1>You requested to reset your password so here is your reset password link</h1>
               <p>${resetLink}</p>`
       })
