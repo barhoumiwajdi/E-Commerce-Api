@@ -17,7 +17,7 @@ const CategorySchema = new schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Product'
   }],
-  ParentCategory: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' }
+  //  ParentCategory: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' }
 }
   , {
     timestamps: true,
